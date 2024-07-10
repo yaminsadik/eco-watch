@@ -17,10 +17,6 @@ body {
 
 /* For the whole page */
 body {
-  background-color: #116466; /* Change to your desired color */
+  background-color: white; /* Change to your desired color */
 }
 
-/* Or if you have a main container div in your App component */
-.main-container {
-  background-color: #116466; /* Change to your desired color */
-}
