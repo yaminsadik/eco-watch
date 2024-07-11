@@ -11,33 +11,35 @@ function Navbar() {
         <Container>
           <div className="flex items-center justify-between h-16">
             <div className="flex gap-4 items-center">
-              <img className="h-[40px] w-[120px]" src={logo} alt="Workflow" />
+              <Link to="/">
+                <img className="h-[40px] w-[120px]" src={logo} alt="Home" />
+              </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <Link
                     to="/"
-                    className=" hover:bg-button-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="hover:bg-button-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Home
                   </Link>
-  
-                  
+
+
                   <Link
-                    to="/"
+                    to="/about"
                     className="hover:bg-button-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     About
                   </Link>
-                 
+
                   <Link
-                    to="/"
+                    to="/contact"
                     className="hover:bg-button-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Contact
                   </Link>
 
                   <Link
-                    to="/"
+                    to="/demo"
                     className="hover:bg-button-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Demo
@@ -45,8 +47,8 @@ function Navbar() {
                 </div>
               </div>
             </div>
-  
-            <Link to="/">
+
+            <Link to="/login">
               <div className="hidden md:block hover:bg-button-primary px-4 py-1 rounded-xl">
                 Log In
               </div>
@@ -60,12 +62,12 @@ function Navbar() {
                 aria-expanded="false"
               >
                 <span className="sr-only">Open main menu</span>
-  
+
                 <i className="fas fa-bars"></i>
               </button>
             </div>
           </div>
-  
+
           {isOpen && (
             <div className="md:hidden transition-all" id="mobile-menu">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-black">
@@ -76,19 +78,19 @@ function Navbar() {
                   Home
                 </Link>
                 <Link
-                  to="/"
+                  to="/about"
                   className="hover:bg-primary-base hover:bg-button-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  about
+                  About
                 </Link>
                 <Link
-                  to="/"
+                  to="/contact"
                   className="hover:bg-primary-base hover:bg-button-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Contact
                 </Link>
                 <Link
-                  to="/"
+                  to="/demo"
                   className="hover:bg-primary-base hover:bg-button-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Demo
