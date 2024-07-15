@@ -1,15 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Auth0Provider } from "@auth0/auth0-react";
+import CallbackComponent from "./components/Callbackcomponent";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Auth0Provider
+        domain="dev-hg7dnj5cgv5g1j0y.us.auth0.com"
+        clientId="RO1t3Aqf6hvVJrB5NuIb7g9PH8X1WW3f"
+        authorizationParams={{
+          redirect_uri: "https://localhost:3000/callback",
+        }}
+      >
+        <Routes>
+          <Route path="/callback" element={<CallbackComponent />} />
+          <Route path="/*" element={<App />} />
+        </Routes>
+      </Auth0Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
