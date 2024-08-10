@@ -1,4 +1,5 @@
 # Eco-Watch
+[Live Demo](https://ecowatch.netlify.app/)
 
 Eco-Watch is a website designed to showcase the capabilities of AI in detecting illegal dumping and litter through drone imagery. The project utilizes the YOLOv8 algorithm to identify and manage waste, contributing to sustainable waste management practices.
 
