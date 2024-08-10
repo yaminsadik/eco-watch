@@ -1,5 +1,5 @@
 import React from "react";
-import frontImage from "../../assets/front.jpg";
+
 
 const Front = () => {
   return (
