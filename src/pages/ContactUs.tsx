@@ -2,6 +2,17 @@ import { useState } from "react";
 import SectionTitle from "@components/Home/SectionTitle";
 import type { ContactFields } from "@app-types/index";
 
+interface ContactChip {
+  icon: string;
+  label: string;
+}
+
+const CHIPS: ContactChip[] = [
+  { icon: "✉️", label: "hello@eco-watch.io" },
+  { icon: "📞", label: "+1 (800) ECO-WATCH" },
+  { icon: "📍", label: "London, United Kingdom" },
+];
+
 export default function ContactUs(): JSX.Element {
   const [fields, setFields] = useState<ContactFields>({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -26,6 +37,20 @@ export default function ContactUs(): JSX.Element {
   return (
     <div className="min-h-[60vh] bg-gray-100 px-4 py-12 text-center font-sans sm:px-6 sm:py-16 md:py-20">
       <SectionTitle title="Contact Us" classes="mb-6" />
+
+      {/* Contact info chips */}
+      <div className="mb-8 flex flex-wrap justify-center gap-3">
+        {CHIPS.map((chip) => (
+          <span
+            key={chip.label}
+            className="flex items-center gap-2 rounded-full border border-green-200 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm"
+          >
+            <span aria-hidden="true">{chip.icon}</span>
+            {chip.label}
+          </span>
+        ))}
+      </div>
+
       {submitted ? (
         <div className="mx-auto max-w-sm rounded-xl bg-white p-8 shadow-md">
           <p className="text-lg font-medium text-green-600">
@@ -82,7 +107,7 @@ export default function ContactUs(): JSX.Element {
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-green-500 py-3 font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-600 hover:shadow-md active:scale-[0.98]"
+            className="w-full rounded-lg bg-green-500 py-3 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-green-600 hover:shadow-md active:scale-[0.98]"
           >
             Send Message
           </button>

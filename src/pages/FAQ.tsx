@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SectionTitle from "@components/Home/SectionTitle";
 import type { FaqItem } from "@app-types/index";
 
@@ -77,6 +78,17 @@ export default function FAQ(): JSX.Element {
             </div>
           );
         })}
+
+        {/* Still have questions CTA */}
+        <div className="mt-8 rounded-xl border border-green-200 bg-white p-6 shadow-sm">
+          <p className="mb-1 text-base font-semibold text-gray-800">Still have questions?</p>
+          <p className="mb-4 text-sm text-gray-500">
+            Can&apos;t find the answer you&apos;re looking for? Reach out to our team.
+          </p>
+          <Link to="/contact" className="btn-primary text-sm">
+            Contact Us
+          </Link>
+        </div>
       </div>
     </div>
   );

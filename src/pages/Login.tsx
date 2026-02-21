@@ -28,7 +28,28 @@ export default function Login(): JSX.Element {
   return (
     <div className="flex min-h-[80vh] items-center justify-center bg-gray-100 px-4 py-12 sm:px-6">
       <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg sm:p-10">
-        <SectionTitle title="Login" classes="mb-6 text-center" />
+        {/* Welcome icon */}
+        <div className="mb-4 flex justify-center">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+            <svg
+              className="h-7 w-7 text-green-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </span>
+        </div>
+        <SectionTitle title="Login" classes="mb-1 text-center" />
+        <p className="mb-6 text-center text-sm text-gray-500">Sign in to your dashboard</p>
+
         <form onSubmit={handleSubmit} noValidate>
           <div className="mb-5">
             <label className="mb-1.5 block text-sm font-medium text-gray-700" htmlFor="username">
@@ -63,10 +84,19 @@ export default function Login(): JSX.Element {
           )}
           <button
             type="submit"
-            className="mt-1 w-full rounded-lg bg-green-500 py-3 font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-600 hover:shadow-md active:scale-[0.98]"
+            className="mt-1 w-full rounded-lg bg-green-500 py-3 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-green-600 hover:shadow-md active:scale-[0.98]"
           >
             Login
           </button>
+          <p className="mt-4 text-center text-sm text-gray-500">
+            <button
+              type="button"
+              className="text-green-600 underline-offset-2 hover:underline focus:outline-none"
+              onClick={() => alert("Password reset coming soon.")}
+            >
+              Forgot password?
+            </button>
+          </p>
         </form>
       </div>
     </div>

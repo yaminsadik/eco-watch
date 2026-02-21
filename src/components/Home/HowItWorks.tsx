@@ -43,8 +43,12 @@ export default function HowItWorks(): JSX.Element {
             {ITEMS.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col items-center justify-center text-center"
+                className="flex flex-col items-center justify-center text-center transition-transform duration-200 hover:-translate-y-1"
               >
+                {/* Numbered step badge */}
+                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-sm font-bold text-white shadow">
+                  {item.id}
+                </div>
                 <img
                   src={item.icon}
                   alt={item.heading}

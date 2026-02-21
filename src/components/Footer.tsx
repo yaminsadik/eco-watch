@@ -19,7 +19,10 @@ export default function Footer(): JSX.Element {
     <footer className="bg-[#212121] py-10 text-white">
       <Container>
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row sm:gap-0">
-          <img src={logo} alt="Eco-Watch logo" className="h-10 w-auto" />
+          <div className="flex flex-col items-center gap-1 sm:items-start">
+            <img src={logo} alt="Eco-Watch logo" className="h-10 w-auto" />
+            <p className="text-xs text-gray-400">Fighting illegal dumping with AI</p>
+          </div>
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 sm:flex-nowrap sm:gap-x-8">
             {FOOTER_LINKS.map(({ label, to }) => (
               <li key={to}>

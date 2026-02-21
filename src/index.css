@@ -11,9 +11,47 @@
     padding: 0;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   html,
   body {
     font-family: "Montserrat", sans-serif;
     background-color: white;
+  }
+
+  /* Selection colour */
+  ::selection {
+    background-color: #86efac; /* green-300 */
+    color: #14532d; /* green-900 */
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a5b9a7;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6b8f6e;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block rounded-lg bg-green-500 px-8 py-3 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-green-600 hover:shadow-md active:scale-95;
+  }
+
+  .card {
+    @apply rounded-xl bg-white p-6 shadow-md transition-transform duration-200 hover:-translate-y-1;
   }
 }
