@@ -36,45 +36,65 @@ export default function Roadmap(): JSX.Element {
         and litter using AI and alert the authorities.
       </p>
 
-      {/* ── Mobile: single left-aligned column ── */}
-      <div className="relative block pl-6 md:hidden">
-        {/* Vertical spine anchored to the left */}
-        <div className="absolute left-2 top-0 h-full w-0.5 bg-gray-200" />
-        {EVENTS.map((event) => (
-          <div key={event.date} className="relative mb-8 last:mb-0">
-            {/* Dot on spine */}
-            <div className="absolute -left-[18px] top-5 h-3 w-3 rounded-full border-2 border-white bg-green-500 shadow" />
-            <div className="rounded-lg bg-white p-5 text-left shadow-md">
-              <h3 className="mb-1 font-bold text-gray-800">{event.date}</h3>
-              <p className="text-sm leading-relaxed text-gray-600">{event.description}</p>
+      {/* ── Mobile: flex-based left-spine column ── */}
+      <div className="block md:hidden">
+        {EVENTS.map((event, index) => (
+          <div key={event.date} className="flex gap-4 text-left">
+            {/* Spine + dot column */}
+            <div className="flex flex-col items-center">
+              <div className="mt-[22px] h-3 w-3 shrink-0 rounded-full border-2 border-white bg-green-500 shadow" />
+              {/* Connector line — hidden for last item */}
+              {index < EVENTS.length - 1 && (
+                <div className="mt-1 w-0.5 flex-1 bg-gray-200" />
+              )}
+            </div>
+            {/* Card */}
+            <div className={`flex-1 pb-8 ${index === EVENTS.length - 1 ? "pb-0" : ""}`}>
+              <div className="rounded-lg bg-white p-5 shadow-md">
+                <h3 className="mb-1 font-bold text-gray-800">{event.date}</h3>
+                <p className="text-sm leading-relaxed text-gray-600">{event.description}</p>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* ── Desktop: alternating centre-spine layout ── */}
+      {/* ── Desktop: 3-column alternating centre-spine layout ── */}
       <div className="relative mx-auto hidden max-w-4xl md:block">
-        {/* Centre spine */}
+        {/* Centre spine — sits behind everything */}
         <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gray-200" />
-        {EVENTS.map((event, index) => (
-          <div
-            key={event.date}
-            className={`mb-10 flex w-full items-center last:mb-0 ${
-              index % 2 === 0 ? "flex-row-reverse" : ""
-            }`}
-          >
-            <div className="w-1/2 px-6">
-              <div className="rounded-lg bg-white p-6 text-left shadow-md">
-                <h3 className="mb-2 text-lg font-bold text-gray-800">{event.date}</h3>
-                <p className="text-sm leading-relaxed text-gray-600">{event.description}</p>
+
+        {EVENTS.map((event, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div key={event.date} className="mb-10 flex w-full items-center last:mb-0">
+              {/* Left slot */}
+              <div className="w-5/12 px-6 text-right">
+                {!isEven && (
+                  <div className="rounded-lg bg-white p-6 text-left shadow-md">
+                    <h3 className="mb-2 text-lg font-bold text-gray-800">{event.date}</h3>
+                    <p className="text-sm leading-relaxed text-gray-600">{event.description}</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Centre dot */}
+              <div className="flex w-2/12 justify-center">
+                <div className="z-10 h-4 w-4 rounded-full border-2 border-white bg-green-500 shadow" />
+              </div>
+
+              {/* Right slot */}
+              <div className="w-5/12 px-6 text-left">
+                {isEven && (
+                  <div className="rounded-lg bg-white p-6 shadow-md">
+                    <h3 className="mb-2 text-lg font-bold text-gray-800">{event.date}</h3>
+                    <p className="text-sm leading-relaxed text-gray-600">{event.description}</p>
+                  </div>
+                )}
               </div>
             </div>
-            {/* Dot */}
-            <div className="flex w-8 shrink-0 justify-center">
-              <div className="h-4 w-4 rounded-full border-2 border-white bg-green-500 shadow" />
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
