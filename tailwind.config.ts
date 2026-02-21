@@ -1,8 +1,12 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Montserrat", "sans-serif"],
+      },
       backgroundImage: {
         homefrontbg: "url('/src/assets/front.jpg')",
       },
@@ -13,5 +17,6 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
 
+export default config;
