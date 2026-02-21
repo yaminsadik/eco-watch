@@ -22,13 +22,16 @@ export default function Login(): JSX.Element {
     alert(`Welcome, ${fields.username}!`);
   };
 
+  const inputClass =
+    "w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-shadow duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 sm:text-base";
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md rounded-lg bg-white p-10 shadow-lg">
-        <SectionTitle title="Login" classes="mb-5 text-center" />
+    <div className="flex min-h-[80vh] items-center justify-center bg-gray-100 px-4 py-12 sm:px-6">
+      <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg sm:p-10">
+        <SectionTitle title="Login" classes="mb-6 text-center" />
         <form onSubmit={handleSubmit} noValidate>
-          <div className="mb-4">
-            <label className="mb-2 block text-left text-gray-700" htmlFor="username">
+          <div className="mb-5">
+            <label className="mb-1.5 block text-sm font-medium text-gray-700" htmlFor="username">
               Username
             </label>
             <input
@@ -36,13 +39,13 @@ export default function Login(): JSX.Element {
               id="username"
               name="username"
               autoComplete="username"
-              className="w-full rounded-lg border p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className={inputClass}
               value={fields.username}
               onChange={handleChange}
             />
           </div>
-          <div className="mb-4">
-            <label className="mb-2 block text-left text-gray-700" htmlFor="password">
+          <div className="mb-5">
+            <label className="mb-1.5 block text-sm font-medium text-gray-700" htmlFor="password">
               Password
             </label>
             <input
@@ -50,15 +53,17 @@ export default function Login(): JSX.Element {
               id="password"
               name="password"
               autoComplete="current-password"
-              className="w-full rounded-lg border p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className={inputClass}
               value={fields.password}
               onChange={handleChange}
             />
           </div>
-          {error && <p className="mb-4 text-red-500">{error}</p>}
+          {error && (
+            <p className="mb-4 rounded-md bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>
+          )}
           <button
             type="submit"
-            className="w-full rounded-lg bg-green-500 py-3 text-white transition duration-300 hover:bg-green-600"
+            className="mt-1 w-full rounded-lg bg-green-500 py-3 font-medium text-white shadow-sm transition-all duration-200 hover:bg-green-600 hover:shadow-md active:scale-[0.98]"
           >
             Login
           </button>

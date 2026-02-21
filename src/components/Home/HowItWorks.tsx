@@ -35,16 +35,23 @@ const ITEMS: HowItWorksItem[] = [
 
 export default function HowItWorks(): JSX.Element {
   return (
-    <section className="my-14">
+    <section className="my-12 sm:my-14 lg:my-20">
       <Container>
         <SectionTitle title="how it works" />
-        <div className="mt-8 rounded-md bg-[#3A5FCD] bg-opacity-30 px-8 py-14">
-          <div className="grid grid-cols-1 place-items-center gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-14">
+        <div className="mt-6 rounded-xl bg-[#3A5FCD]/20 px-4 py-10 sm:mt-8 sm:px-8 sm:py-14">
+          <div className="grid grid-cols-1 place-items-center gap-10 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-12">
             {ITEMS.map((item) => (
-              <div key={item.id} className="flex flex-col items-center justify-center text-center">
-                <img src={item.icon} alt={item.heading} className="w-24 pb-4" />
-                <h2 className="py-4 text-lg font-bold">{item.heading}</h2>
-                <p>{item.text}</p>
+              <div
+                key={item.id}
+                className="flex flex-col items-center justify-center text-center"
+              >
+                <img
+                  src={item.icon}
+                  alt={item.heading}
+                  className="mb-4 w-20 sm:w-24"
+                />
+                <h2 className="mb-3 text-base font-bold leading-snug sm:text-lg">{item.heading}</h2>
+                <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{item.text}</p>
               </div>
             ))}
           </div>

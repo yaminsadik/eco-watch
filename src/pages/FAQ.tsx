@@ -27,29 +27,56 @@ export default function FAQ(): JSX.Element {
   };
 
   return (
-    <div className="bg-gray-100 p-10 text-center font-sans">
-      <SectionTitle title="FAQ" classes="mb-5" />
+    <div className="min-h-[60vh] bg-gray-100 px-4 py-12 text-center font-sans sm:px-6 sm:py-16 md:py-20">
+      <SectionTitle title="FAQ" classes="mb-6" />
       <div className="mx-auto max-w-xl">
-        {FAQS.map((faq, index) => (
-          <div key={faq.question} className="mb-4">
-            <button
-              type="button"
-              className="w-full rounded-lg border bg-white p-4 text-left shadow-lg focus:outline-none"
-              onClick={() => toggleFAQ(index)}
-              aria-expanded={activeIndex === index}
-            >
-              <div className="flex items-center justify-between">
-                <span>{faq.question}</span>
-                <span aria-hidden="true">{activeIndex === index ? "−" : "+"}</span>
+        {FAQS.map((faq, index) => {
+          const open = activeIndex === index;
+          return (
+            <div key={faq.question} className="mb-3">
+              <button
+                type="button"
+                className={`w-full border bg-white px-5 py-4 text-left shadow-sm transition-colors duration-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-button-primary focus:ring-offset-1 ${
+                  open ? "rounded-t-lg" : "rounded-lg"
+                }`}
+                onClick={() => toggleFAQ(index)}
+                aria-expanded={open}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-medium text-gray-800">{faq.question}</span>
+                  {/* Animated chevron */}
+                  <svg
+                    className={`h-4 w-4 shrink-0 text-gray-500 transition-transform duration-300 ${
+                      open ? "rotate-180" : "rotate-0"
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </button>
+
+              {/* Smooth open/close using CSS grid-rows transition */}
+              <div
+                className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                  open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="rounded-b-lg border border-t-0 bg-white px-5 py-4 text-left shadow-sm">
+                    <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </button>
-            {activeIndex === index && (
-              <div className="rounded-b-lg border border-t-0 bg-gray-100 p-4">
-                <p>{faq.answer}</p>
-              </div>
-            )}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

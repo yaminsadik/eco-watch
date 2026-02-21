@@ -5,5 +5,7 @@ interface ContainerProps {
 }
 
 export default function Container({ children }: ContainerProps): JSX.Element {
-  return <div className="mx-auto w-full px-3 md:w-11/12 md:px-0">{children}</div>;
+  return (
+    <div className="mx-auto w-full px-4 sm:px-6 md:w-11/12 md:px-0">{children}</div>
+  );
 }

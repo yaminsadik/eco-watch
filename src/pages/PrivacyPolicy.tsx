@@ -34,19 +34,23 @@ const SECTIONS: PolicySection[] = [
 
 export default function PrivacyPolicy(): JSX.Element {
   return (
-    <div className="bg-gray-100 p-10 text-center font-sans">
-      <SectionTitle title="Privacy Policy" classes="mb-5" />
-      <div className="mx-auto max-w-4xl text-left">
-        <p className="mb-4 text-lg text-gray-600">
+    <div className="min-h-[60vh] bg-gray-100 px-4 py-12 font-sans sm:px-6 sm:py-16 md:py-20">
+      <div className="mx-auto max-w-3xl">
+        <SectionTitle title="Privacy Policy" classes="mb-6 text-center" />
+        <p className="mb-8 text-base leading-relaxed text-gray-600 sm:text-lg">
           We value your privacy and are committed to protecting your personal information. This
           privacy policy outlines how we collect, use, and safeguard your data.
         </p>
-        {SECTIONS.map((section) => (
-          <div key={section.heading}>
-            <h2 className="mb-2 text-xl font-bold">{section.heading}</h2>
-            <p className="mb-4 text-gray-600">{section.body}</p>
-          </div>
-        ))}
+        <div className="space-y-4">
+          {SECTIONS.map((section) => (
+            <div key={section.heading} className="rounded-lg bg-white p-5 shadow-sm sm:p-6">
+              <h2 className="mb-2 text-lg font-bold text-gray-800 sm:text-xl">
+                {section.heading}
+              </h2>
+              <p className="text-sm leading-relaxed text-gray-600 sm:text-base">{section.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
