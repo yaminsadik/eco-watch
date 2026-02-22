@@ -1,6 +1,5 @@
 # Eco-Watch
 
-**[Live Demo](https://ecowatch.netlify.app/)**
 
 Eco-Watch is a landing page that showcases an AI-powered drone surveillance system for detecting illegal dumping and litter in rural and semi-urban environments.
 
